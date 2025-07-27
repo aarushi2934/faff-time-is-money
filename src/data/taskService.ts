@@ -179,6 +179,8 @@ export const getTopTasks = (
 ): Task[] => {
   // Case 1: No status selected - return all tasks sorted by impact only
   if (!userStatus) {
+    // If categories are selected but no status, still show all tasks by impact
+    // This provides a better user experience than showing nothing
     return [...taskList].sort(
       (a, b) => impactOrder[a.impact] - impactOrder[b.impact]
     );

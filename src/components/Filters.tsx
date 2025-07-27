@@ -29,7 +29,9 @@ export const Filters: React.FC<FiltersProps> = ({
         <div className="bg-glass backdrop-blur-sm rounded-xl shadow-lg p-3 sm:p-4 border border-white/20 animate-fade-in-up">
           {/* Status Filters */}
           <div className="mb-4 sm:mb-5">
-            <h3 className="text-lg sm:text-xl font-bold text-[#145C48] mb-2 sm:mb-3 bg-gradient-text bg-clip-text">Status</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-[#145C48] mb-2 sm:mb-3 bg-gradient-text bg-clip-text">
+              Status <span className="text-sm font-normal text-gray-600">(Choose this first)</span>
+            </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {statusFilters.map((status, index) => (
                 <button
@@ -49,15 +51,24 @@ export const Filters: React.FC<FiltersProps> = ({
 
           {/* Category Filters */}
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-[#145C48] mb-2 sm:mb-3 bg-gradient-text bg-clip-text">Categories</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-[#145C48] mb-2 sm:mb-3 bg-gradient-text bg-clip-text">
+              Categories
+              {selectedStatus.length === 0 && (
+                <span className="text-sm font-normal text-gray-500 ml-2">(Select status first)</span>
+              )}
+            </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {categoryFilters.map((category, index) => (
                 <button
                   key={category}
-                  onClick={() => onCategoryChange(category)}
-                  className={`px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 rounded-full font-bold text-xs sm:text-sm md:text-base transition-all duration-300 transform hover:scale-105 animate-fade-in-up ${selectedCategories.includes(category)
-                    ? 'bg-gradient-to-r from-[#145C48] to-[#0f4a3a] text-white shadow-lg ring-2 ring-[#145C48]/30'
-                    : 'bg-gradient-to-r from-[#a8d5ba] to-[#90c5a4] text-[#145C48] shadow-md hover:shadow-lg hover:-translate-y-1 hover:from-[#90c5a4] hover:to-[#a8d5ba]'
+                  onClick={() => selectedStatus.length > 0 && onCategoryChange(category)}
+                  disabled={selectedStatus.length === 0}
+                  className={`px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 rounded-full font-bold text-xs sm:text-sm md:text-base transition-all duration-300 transform animate-fade-in-up ${
+                    selectedStatus.length === 0
+                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-50'
+                      : selectedCategories.includes(category)
+                      ? 'bg-gradient-to-r from-[#145C48] to-[#0f4a3a] text-white shadow-lg ring-2 ring-[#145C48]/30 hover:scale-105'
+                      : 'bg-gradient-to-r from-[#a8d5ba] to-[#90c5a4] text-[#145C48] shadow-md hover:shadow-lg hover:-translate-y-1 hover:from-[#90c5a4] hover:to-[#a8d5ba] hover:scale-105'
                     } whitespace-nowrap backdrop-blur-sm min-h-[32px] sm:min-h-[36px] md:min-h-[40px]`}
                   style={{ animationDelay: `${(statusFilters.length + index) * 100}ms` }}
                 >
