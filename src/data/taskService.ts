@@ -244,8 +244,26 @@ export const getTopTasks = (
       taskTags.includes(userTag)
     );
 
+    // Debug logging for wedding tasks
+    if (task.title.toLowerCase().includes('wedding') || task.title.toLowerCase().includes('marriage')) {
+      console.log('Wedding task found:', {
+        title: task.title,
+        taskTags,
+        normalizedUserTags,
+        hasOverlappingTag,
+        statusMatch
+      });
+    }
+
     return hasOverlappingTag;
   });
+
+  // Debug logging for filtered results
+  if (normalizedUserTags.includes('getting married')) {
+    console.log('Filtered wedding tasks:', filteredTasks.filter(t => 
+      t.title.toLowerCase().includes('wedding') || t.title.toLowerCase().includes('marriage')
+    ).map(t => t.title));
+  }
 
   // Find popular tasks for each selected category
   const popularTasks: Task[] = [];
@@ -311,9 +329,36 @@ export const getTopTasks = (
     return a.title.localeCompare(b.title);
   });
 
-  // Sort remaining tasks: Impact → Priority Score → Alphabetical
+  // Sort remaining tasks: Category Relevance → Impact → Priority Score → Alphabetical
   remainingTasksWithScores.sort((a, b) => {
-    // First sort by impact (High → Medium → Low)
+    // Calculate category relevance score (lower = more relevant)
+    const getCategoryRelevance = (task: any) => {
+      const title = task.title.toLowerCase();
+      
+      // For "Getting Married" category, prioritize wedding-specific tasks
+      if (normalizedUserTags.includes('getting married')) {
+        if (title.includes('wedding') || title.includes('marriage') || title.includes('bride') || title.includes('groom')) return 0;
+        if (title.includes('bachelor') || title.includes('honeymoon') || title.includes('venue') || title.includes('catering')) return 1;
+        if (title.includes('outfit') || title.includes('photography') || title.includes('gift') || title.includes('invite')) return 2;
+        return 3; // Less relevant tasks
+      }
+      
+      // For "Expecting a Baby" category, prioritize baby-specific tasks
+      if (normalizedUserTags.includes('expecting a baby')) {
+        if (title.includes('baby') || title.includes('prenatal') || title.includes('pregnancy') || title.includes('maternity')) return 0;
+        if (title.includes('nursery') || title.includes('pediatrician') || title.includes('nanny') || title.includes('childcare')) return 1;
+        return 2;
+      }
+      
+      return 0; // Default relevance for other categories
+    };
+
+    const aRelevance = getCategoryRelevance(a);
+    const bRelevance = getCategoryRelevance(b);
+    
+    if (aRelevance !== bRelevance) return aRelevance - bRelevance;
+
+    // Then sort by impact (High → Medium → Low)
     const impactDiff = impactOrder[a.impact] - impactOrder[b.impact];
     if (impactDiff !== 0) return impactDiff;
 
