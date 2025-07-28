@@ -268,7 +268,7 @@ export const getTopTasks = (
 
   // Find popular tasks for each selected category
   const popularTasks: Task[] = [];
-  const popularTaskTitles = new Set<string>();
+  const popularTaskIds = new Set<string>();
 
   normalizedUserTags.forEach((selectedTag) => {
     const popularTaskTitle = categoryPopularTasks[selectedTag];
@@ -279,17 +279,17 @@ export const getTopTasks = (
       );
       if (
         popularTask &&
-        !popularTaskTitles.has(normalizeString(popularTask.title))
+        !popularTaskIds.has(popularTask.id)
       ) {
         popularTasks.push(popularTask);
-        popularTaskTitles.add(normalizeString(popularTask.title));
+        popularTaskIds.add(popularTask.id);
       }
     }
   });
 
-  // Get remaining tasks (excluding popular ones already added)
+  // Get remaining tasks (excluding popular ones already added) - use task ID for exact matching
   const remainingTasks = filteredTasks.filter(
-    (task) => !popularTaskTitles.has(normalizeString(task.title))
+    (task) => !popularTaskIds.has(task.id)
   );
 
   // Add priority scores to both popular and remaining tasks

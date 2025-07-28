@@ -300,7 +300,7 @@ export const impactOrder: Record<"High" | "Medium" | "Low", number> = {
 // Popular tasks for each category - these will appear first when categories are selected
 export const categoryPopularTasks: Record<string, string> = {
   [normalize("Expecting a Baby")]: "Plan baby shower",
-  [normalize("Health and Fitness")]: "Find Personal Trainers",
+  [normalize("Health and Fitness")]: "Find personal trainers",
   [normalize("Long Work Hours")]: "Order Office Meals",
   [normalize("Likes Brunch")]: "Book restaurant tables",
   [normalize("Likes Concert")]: "Book hotel near concert",
