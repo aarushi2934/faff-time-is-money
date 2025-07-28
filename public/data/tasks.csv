@@ -14,15 +14,15 @@ Find vegan/keto/gluten-free restaurants,"Single, Couple, Parents","Health and Fi
 Find personal trainers,"Single, Couple, Parents","Health and Fitness, Work and Career, International Living, Pregnancy and Baby, Entertainment",2,High
 Send wedding gifts,"Single, Parent, Couple",Wedding Planning,2,High
 Book flight tickets,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Relocation, Entertainment",0.5,Medium
-Plan honeymoon trip,Couple,"Wedding Planning, Travel and mobility, Relocation, Pregnancy and Baby",6,High
+Plan honeymoon trip,Couple,"Wedding Planning, Travel and mobility, Relocation, Pregnancy and Baby",5,High
 Book wedding vendors,Couple,"Wedding Planning, Travel and mobility, Work and Career",4,High
 Apply marriage certificate,"Couple, Parent","Wedding Planning, Travel and mobility, Work and Career",4,High
 Send wedding invites,"Couple, Single","Wedding Planning, Travel and mobility, Work and Career",4,Medium
-Set home setup,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation",8,Medium
+Set home setup,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation",5,Medium
 Apply PAN change,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation",1,Medium
-Plan wedding venue,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation",12,Medium
-Hire wedding staff help,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation, Pregnancy and Baby",8,High
-Plan wedding catering,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career",6,Medium
+Plan wedding venue,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation",5,Medium
+Hire wedding staff help,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Relocation, Pregnancy and Baby",5,High
+Plan wedding catering,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career",5,Medium
 Find and book Wedding Photographer,"Couple","Wedding Planning, Travel and mobility, Work and Career",2,High
 Plan Function Timeline,"Parent, Couple, Single","Wedding Planning, Travel and mobility, Work and Career",3,High
 Make gift registry,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Event Planning",2,High
@@ -30,10 +30,10 @@ Find and book cleanup services,"Parent, Single, Couple","Wedding Planning, Trave
 Plan post-wedding party,"Couple","Event Planning, Social and Dining, Entertainment, Wedding Planning, International Living, Relocation",3,High
 Track gift returns,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Event Planning, Pet Care, Relocation",1,Low
 Find and Hire pre-wedding trainer,"Couple, Single","Event Planning, Social and Dining, Entertainment, Wedding Planning, International Living, Relocation",2,Medium
-Apply name change,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career",12,Medium
+Apply name change,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career",5,Medium
 File reimbursements,"Couple, Single, Parents","Wedding Planning, Event Planning, Travel and Mobility, Relocation, Work and Career",4,Low
-Source and order wedding outfits,"Couple, Single",Wedding Planning,6,High
-Find maid/cook/nanny,"Parent, Single, Couple","Work and Career, Relocation, Wedding Planning, Pregnancy and Baby",48,High
+Source and order wedding outfits,"Couple, Single",Wedding Planning,5,High
+Find maid/cook/nanny,"Parent, Single, Couple","Work and Career, Relocation, Wedding Planning, Pregnancy and Baby",5,High
 Track orders/refunds,"Single, Parent, Couple","Relocation, Travel and mobility, Work and Career, Wedding Planning",1,Medium
 Book home repairs,"Single, Parent, Couple","International Living, Work and Career, Wedding Planning, Travel and mobility",1,High
 Plan weekend getaway,"Single, Parent, Couple","Event Planning, International Living, Work and Career, Entertainment, Relocation, Travel and mobility",2,Medium
@@ -44,16 +44,16 @@ Suggest birthday gifts,"Single, Parent, Couple","Travel and mobility, Pet Care, 
 Apply Birth Certificate,"Parent","Pregnancy and Baby, Relocation",1.5,High
 Recommend and schedule deep cleaning,"Single, Parent, Couple","Travel and mobility, Pet Care, Relocation, Wedding Planning, Pregnancy and Baby, Work and Career, International Living, Event Planning",2.5,Medium
 Suggest and register for workshops,"Parent, Couple",Pregnancy and Baby,2,Low
-Plan baby shower,"Parent, Couple",Pregnancy and Baby,10,High
+Plan baby shower,"Parent, Couple",Pregnancy and Baby,5,High
 Order prenatal meds,"Parent, Couple",Pregnancy and Baby,0.5,Low
 Recommend and buy baby items,"Parent, Couple",Pregnancy and Baby,3,Low
 Find and hire Prenatal Coach,"Parent, Couple","Pregnancy and Baby, International Living",2,High
 Find maternity items,"Parent, Couple",Pregnancy and Baby,2,High
 Get electronics fixed,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",5,Medium
-Find rental homes,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",72,High
+Find rental homes,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",5,High
 Renew car insurance,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",1,High
 Order home essentials,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",5,Medium
-Sell old furniture,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",48,Low
+Sell old furniture,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",5,Low
 Apply for government documents,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",3,High
 Set smart reminders,"Couple, Single, Parents","Pregnancy and Baby, Relocation, Work and Career, International Living, Pet Care",1,Medium
 Schedule prenatal visits,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",0.5,Medium
@@ -68,7 +68,7 @@ Create hospital bag,"Parents","Pregnancy and Baby, Health and Fitness, Internati
 Find and order newborn essentials,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",2,Low
 Book prenatal scans,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",0.5,Low
 Get home baby-proofed,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",2,Medium
-Find Nanny Services,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",48,High
+Find Nanny Services,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",5,High
 Book baby photoshoot,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",2,High
 Find and book prenatal yoga,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",2,High
 Apply baby documents,"Parents","Pregnancy and Baby, Health and Fitness, International Living, Work and Career, Pet Care",6,High
@@ -85,11 +85,11 @@ Get visa help,"Couple, Single, Parents","International Living, Travel and Mobili
 Set airline account,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning",0.5,Low
 Set nri account,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning, Pregnancy and Baby",0.5,High
 Change NRO to NRI account,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning, Pregnancy and Baby",2,High
-Apply epfo reimbursements,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning, Pregnancy and Baby",48,Medium
+Apply epfo reimbursements,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning, Pregnancy and Baby",5,Medium
 Find notary services,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning, Event Planning",1,Medium
 Get rent agreement,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning",4,Medium
 Check oci eligibility,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Pregnancy and Baby",2,Medium
-Manage frro process,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career",8,High
+Manage frro process,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career",5,High
 Send items abroad,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Wedding Planning, Pregnancy and Baby",1.5,High
 Get travel recommendations,"Couple, Single, Parents","International Living, Travel and Mobility, Relocation, Work and Career, Pregnancy and Baby",1,High
 Book pet grooming,"Couple, Single, Parents","Pet Care",0.5,High
@@ -103,7 +103,7 @@ Send pet gifts,"Couple, Single, Parents","Pet Care",1,Low
 Set vaccine reminders,"Couple, Single, Parents","Pet Care",0.5,Medium
 Find and order pet supplies,"Couple, Single, Parents","Pet Care",1,Medium
 Find and book pet daycare,"Couple, Single, Parents","Pet Care",1,High
-Get home pet-proofed,"Couple, Single, Parents","Pet Care, Relocation",6,High
+Get home pet-proofed,"Couple, Single, Parents","Pet Care, Relocation",5,High
 Find and register pet events,"Couple, Single, Parents","Pet Care",1,Low
 Book restaurant tables,"Single, Parent, Couple","Travel and mobility, Social and dining, Entertainment, Wedding Planning, Work and Career, Event Planning",1,High
 Find brunch spots,"Single, Parents, Couple","Social and dining, Event Planning, Travel and mobility",1,Medium
@@ -131,7 +131,7 @@ Schedule web check-in,"Single, Parents, Couple","Travel and mobility, Relocation
 Book medical appointments,"Single, Parents, Couple","Work and Career, Pregnancy and Baby",0.5,Medium
 Arrange porter delivery,"Single, Parents, Couple","Work and Career, Relocation, Travel and mobility",0.5,Medium
 Set task reminders,"Single, Parents, Couple","Work and Career, Travel and mobility, Relocation, International Living",0.5,Low
-Find domestic help,"Single, Parents, Couple","Work and Career, Pregnancy and Baby",48,High
+Find domestic help,"Single, Parents, Couple","Work and Career, Pregnancy and Baby",5,High
 Find and book dry cleaning,"Single, Parents, Couple","Work and Career, Relocation",1.5,Medium
 Suggest and send personal gifts,"Single, Parents, Couple","Work and Career, Social and dining",2,Medium
 Book luxury car,"Single, Parents, Couple","Work and Career, Relocation, Travel and mobility",0.5,High
@@ -141,7 +141,7 @@ Assist and book repairs,"Single, Parents, Couple","Work and Career, Internationa
 Compile calender trackers,"Single, Parents, Couple",Work and Career,1,Low
 Recommend nearby hangout spots,"Single, Parents, Couple","Relocation, Work and Career",1,High
 Find personal chef,"Single, Parents, Couple","Relocation, Pregnancy and Baby, Health and Fitness, Work and Career",3,Medium
-Search rental homes,"Single, Parents, Couple","Relocation, Travel and mobility, Event Planning",48,High
+Search rental homes,"Single, Parents, Couple","Relocation, Travel and mobility, Event Planning",5,High
 Arrange home shifting setup,"Single, Parents, Couple","Relocation, Travel and mobility, International Living, Wedding Planning",1,High
 Create rent agreement,"Single, Parents, Couple","Relocation, Travel and mobility, International Living",1,Medium
 Update Aadhaar address,"Single, Parents, Couple","Relocation, Wedding Planning, Work and Career",0.5,High
@@ -158,7 +158,7 @@ Find and book Wi-Fi provider,"Single, Parents, Couple","Relocation",1,High
 Port SIM or services,"Single, Parents, Couple",Relocation,1,Low
 Find nearby gym,"Single, Parents, Couple","Relocation, Health and Fitness, Travel and mobility",1,Low
 Update bank account,"Single, Parents, Couple","Relocation, International Living, Wedding Planning",3,Medium
-Research real estate,"Couple, Single, Parents","Relocation, Work and Career, International Living, Travel and Mobility, Pregnancy and Baby",7,Low
+Research real estate,"Couple, Single, Parents","Relocation, Work and Career, International Living, Travel and Mobility, Pregnancy and Baby",5,Low
 Find and buy home appliances,"Single, Parents, Couple",Relocation,1,High
 Find and book hotel near concert,"Single, Parents, Couple","Entertainment, Travel and mobility, Event Planning, Relocation",1,High
 Recommend events,"Couple, Single, Parents","Entertainment, Travel and Mobility, Relocation, Social and Dining, Event Planning, International Living",2,Low
@@ -177,7 +177,7 @@ Plan travel itinerary,"Single, Parents, Couple","Entertainment, Event Planning, 
 Check-in for travel,"Single, Parents, Couple","Entertainment, Event Planning, Travel and mobility, Social and dining",1,High
 Enquire VIP access,"Single, Parents, Couple","Entertainment, Event Planning, Travel and mobility, Relocation, Social and dining",0.5,High
 Find and book DJ/band,"Single, Parents, Couple","Wedding Planning, Event Planning",2,Medium
-Coordinate vendors,"Single, Parents, Couple","Wedding Planning, Event Planning, Relocation, Social and dining",8,High
+Coordinate vendors,"Single, Parents, Couple","Wedding Planning, Event Planning, Relocation, Social and dining",5,High
 Arrange outfit trials,"Single, Parents, Couple","Wedding Planning, Event Planning, Social and dining",1,High
 Plan bachelor party,"Single, Couple",Wedding Planning,4,High
 Find and book travel for guests,"Single, Parents, Couple","Wedding Planning, Travel and mobility, Relocation, Event Planning, Work and Career",2,High
