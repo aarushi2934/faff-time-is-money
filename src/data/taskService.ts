@@ -63,19 +63,19 @@ const normalizeStatus = (status: string): UserStatus => {
  */
 const normalizeTag = (tag: string): Tag => {
   const normalized = normalizeString(tag);
-  // Map common variants to standard forms
+  // Map old category names to new display names
   const tagMappings: Record<string, Tag> = {
-    "travel and mobility": "Travel and mobility",
-    "social and dining": "Social and dining",
+    "travel and mobility": "Frequent Travel",
+    "social and dining": "Likes Brunch",
     "health and fitness": "Health and Fitness",
-    "work and career": "Work and Career",
-    "international living": "International Living",
-    "event planning": "Event Planning",
-    "wedding planning": "Wedding Planning",
-    "pregnancy and baby": "Pregnancy and Baby",
-    "pet care": "Pet Care",
-    relocation: "Relocation",
-    entertainment: "Entertainment",
+    "work and career": "Long Work Hours",
+    "international living": "NRI/Expats",
+    "event planning": "Plan Social Gathering",
+    "wedding planning": "Getting Married",
+    "pregnancy and baby": "Expecting a Baby",
+    "pet care": "Pet Parent",
+    "relocation": "Moving Cities",
+    "entertainment": "Likes Concert",
   };
 
   return tagMappings[normalized] || "Health and Fitness"; // Default fallback
@@ -162,6 +162,9 @@ const parseTasksFromCSV = async (): Promise<Task[]> => {
 // Fetch and parse tasks once, then reuse the result.
 export const allTasksPromise: Promise<Task[]> = parseTasksFromCSV();
 
+// The number of tasks to return in the final sorted list
+export const TOP_TASK_LIMIT = 15;
+
 // Dynamically generate category filters from the single source of truth.
 export const categoryFilters: readonly Tag[] = TAGS;
 
@@ -177,13 +180,13 @@ export const getTopTasks = (
   userStatus: UserStatus,
   userTags: string[]
 ): Task[] => {
-  // Case 1: No status selected - return all tasks sorted by impact only
+  // Case 1: No status selected - return first 15 tasks sorted by impact only
   if (!userStatus) {
     // If categories are selected but no status, still show all tasks by impact
     // This provides a better user experience than showing nothing
-    return [...taskList].sort(
-      (a, b) => impactOrder[a.impact] - impactOrder[b.impact]
-    );
+    return [...taskList]
+      .sort((a, b) => impactOrder[a.impact] - impactOrder[b.impact])
+      .slice(0, TOP_TASK_LIMIT);
   }
 
   // Case 2: Status selected but no categories - filter by status and prioritize by status preferences
@@ -220,7 +223,7 @@ export const getTopTasks = (
       return a.title.localeCompare(b.title);
     });
 
-    return tasksWithScores;
+    return tasksWithScores.slice(0, TOP_TASK_LIMIT);
   }
 
   // Case 3: Both status and categories selected - show popular tasks from each category first
@@ -325,6 +328,6 @@ export const getTopTasks = (
   mediumImpactTasks.sort(sortByPriorityThenAlphabetical);
   lowImpactTasks.sort(sortByPriorityThenAlphabetical);
 
-  // Combine: Popular tasks first, then High → Medium → Low impact tasks
-  return [...popularTasksWithScores, ...highImpactTasks, ...mediumImpactTasks, ...lowImpactTasks];
+  // Combine: Popular tasks first, then High → Medium → Low impact tasks, limited to 15 tasks
+  return [...popularTasksWithScores, ...highImpactTasks, ...mediumImpactTasks, ...lowImpactTasks].slice(0, TOP_TASK_LIMIT);
 };
