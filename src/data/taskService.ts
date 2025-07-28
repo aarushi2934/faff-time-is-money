@@ -331,26 +331,76 @@ export const getTopTasks = (
 
   // Sort remaining tasks: Category Relevance → Impact → Priority Score → Alphabetical
   remainingTasksWithScores.sort((a, b) => {
-    // Calculate category relevance score (lower = more relevant)
+    // Calculate category relevance score (lower = more relevant) - only for single category selection
     const getCategoryRelevance = (task: any) => {
+      if (normalizedUserTags.length !== 1) return 0; // Only apply for single category selection
+      
       const title = task.title.toLowerCase();
+      const selectedCategory = normalizedUserTags[0];
       
-      // For "Getting Married" category, prioritize wedding-specific tasks
-      if (normalizedUserTags.includes('getting married')) {
-        if (title.includes('wedding') || title.includes('marriage') || title.includes('bride') || title.includes('groom')) return 0;
-        if (title.includes('bachelor') || title.includes('honeymoon') || title.includes('venue') || title.includes('catering')) return 1;
-        if (title.includes('outfit') || title.includes('photography') || title.includes('gift') || title.includes('invite')) return 2;
-        return 3; // Less relevant tasks
+      switch (selectedCategory) {
+        case 'getting married':
+          if (title.includes('wedding') || title.includes('marriage') || title.includes('bride') || title.includes('groom')) return 0;
+          if (title.includes('bachelor') || title.includes('honeymoon') || title.includes('venue') || title.includes('catering')) return 1;
+          if (title.includes('outfit') || title.includes('photography') || title.includes('gift') || title.includes('invite')) return 2;
+          return 3;
+
+        case 'expecting a baby':
+          if (title.includes('baby') || title.includes('prenatal') || title.includes('pregnancy') || title.includes('maternity')) return 0;
+          if (title.includes('nursery') || title.includes('pediatrician') || title.includes('nanny') || title.includes('childcare')) return 1;
+          return 2;
+
+        case 'frequent travel':
+          if (title.includes('travel') || title.includes('flight') || title.includes('trip') || title.includes('visa')) return 0;
+          if (title.includes('passport') || title.includes('booking') || title.includes('itinerary') || title.includes('cab')) return 1;
+          if (title.includes('luggage') || title.includes('check-in') || title.includes('hotel')) return 2;
+          return 3;
+
+        case 'health and fitness':
+          if (title.includes('fitness') || title.includes('gym') || title.includes('workout') || title.includes('trainer')) return 0;
+          if (title.includes('health') || title.includes('medical') || title.includes('protein') || title.includes('nutrition')) return 1;
+          if (title.includes('wellness') || title.includes('yoga') || title.includes('swimming')) return 2;
+          return 3;
+
+        case 'pet parent':
+          if (title.includes('pet') || title.includes('dog') || title.includes('cat') || title.includes('vet')) return 0;
+          if (title.includes('grooming') || title.includes('boarding') || title.includes('daycare') || title.includes('vaccine')) return 1;
+          return 2;
+
+        case 'long work hours':
+          if (title.includes('office') || title.includes('work') || title.includes('client') || title.includes('meeting')) return 0;
+          if (title.includes('meal') || title.includes('cab') || title.includes('supplies') || title.includes('reminder')) return 1;
+          return 2;
+
+        case 'moving cities':
+          if (title.includes('rental') || title.includes('shifting') || title.includes('moving') || title.includes('relocation')) return 0;
+          if (title.includes('furniture') || title.includes('cleaning') || title.includes('utility') || title.includes('address')) return 1;
+          if (title.includes('technician') || title.includes('wifi') || title.includes('bank')) return 2;
+          return 3;
+
+        case 'likes brunch':
+          if (title.includes('restaurant') || title.includes('brunch') || title.includes('dining') || title.includes('table')) return 0;
+          if (title.includes('food') || title.includes('meal') || title.includes('chef') || title.includes('catering')) return 1;
+          return 2;
+
+        case 'likes concert':
+          if (title.includes('concert') || title.includes('event') || title.includes('ticket') || title.includes('entertainment')) return 0;
+          if (title.includes('hotel') || title.includes('venue') || title.includes('artist') || title.includes('show')) return 1;
+          return 2;
+
+        case 'nri/expats':
+          if (title.includes('visa') || title.includes('passport') || title.includes('nri') || title.includes('expat')) return 0;
+          if (title.includes('account') || title.includes('documents') || title.includes('abroad') || title.includes('cultural')) return 1;
+          return 2;
+
+        case 'plan social gathering':
+          if (title.includes('event') || title.includes('party') || title.includes('gathering') || title.includes('venue')) return 0;
+          if (title.includes('decoration') || title.includes('entertainment') || title.includes('catering') || title.includes('invite')) return 1;
+          return 2;
+
+        default:
+          return 0;
       }
-      
-      // For "Expecting a Baby" category, prioritize baby-specific tasks
-      if (normalizedUserTags.includes('expecting a baby')) {
-        if (title.includes('baby') || title.includes('prenatal') || title.includes('pregnancy') || title.includes('maternity')) return 0;
-        if (title.includes('nursery') || title.includes('pediatrician') || title.includes('nanny') || title.includes('childcare')) return 1;
-        return 2;
-      }
-      
-      return 0; // Default relevance for other categories
     };
 
     const aRelevance = getCategoryRelevance(a);
