@@ -12,7 +12,6 @@ Fitness Class Enquiry,"Single, Couple, Parent","Health and Fitness, Entertainmen
 Find swimming pool,"Single, Couple, Parent","Health and Fitness, Entertainment, Travel and mobility",0.5,Low
 Find vegan/keto/gluten-free restaurants,"Single, Couple, Parents","Health and Fitness, Work and Career, International Living, Pregnancy and Baby, Entertainment",1,Low
 Find personal trainers,"Single, Couple, Parents","Health and Fitness, Work and Career, International Living, Pregnancy and Baby, Entertainment",2,High
-Find swimming pools,"Couple, Single, Parents","Health and Fitness, Work and Career, International Living, Pregnancy and Baby, Entertainment",0.5,Low
 Send wedding gifts,"Single, Parent, Couple",Wedding Planning,4,High
 Book flight tickets,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Relocation, Entertainment",3,Medium
 Plan honeymoon trip,Couple,"Wedding Planning, Travel and mobility, Relocation, Pregnancy and Baby",6,High
@@ -28,6 +27,7 @@ Coordinate Wedding Photography,Couple,"Wedding Planning, Travel and mobility, Wo
 Plan Function Timeline,"Parent, Couple, Single","Wedding Planning, Travel and mobility, Work and Career",3,High
 Set gift registry,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career, Event Planning",3.5,High
 Book cleanup services,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career",1,Medium
+Plan post-wedding party,"Couple","Event Planning, Social and Dining, Entertainment, Wedding Planning, International Living, Relocation",5,High
 Track gift returns,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Event Planning, Pet Care, Relocation",2,Low
 Hire pre-wedding trainer,"Couple, Single","Event Planning, Social and Dining, Entertainment, Wedding Planning, International Living, Relocation",2,Medium
 Apply name change,"Parent, Single, Couple","Wedding Planning, Travel and mobility, Work and Career",3,Medium

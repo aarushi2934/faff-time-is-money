@@ -180,10 +180,13 @@ export const getTopTasks = (
   userStatus: UserStatus,
   userTags: string[]
 ): Task[] => {
-  // Case 1: No status selected - return first 15 tasks sorted by impact only
+  // Case 1: No filters selected - show ALL tasks in original CSV order
+  if (!userStatus && userTags.length === 0) {
+    return taskList; // Return all tasks in original order
+  }
+
+  // Case 1b: No status selected but categories selected - return tasks by impact
   if (!userStatus) {
-    // If categories are selected but no status, still show all tasks by impact
-    // This provides a better user experience than showing nothing
     return [...taskList]
       .sort((a, b) => impactOrder[a.impact] - impactOrder[b.impact])
       .slice(0, TOP_TASK_LIMIT);
