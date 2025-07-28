@@ -169,6 +169,78 @@ export const TOP_TASK_LIMIT = 15;
 export const categoryFilters: readonly Tag[] = TAGS;
 
 /**
+ * Calculate category relevance score for a task title based on selected category
+ * @param title - The task title (lowercase)
+ * @param selectedCategory - The selected category (normalized)
+ * @returns Relevance score (lower = more relevant)
+ */
+const getCategoryRelevance = (title: string, selectedCategory: string): number => {
+  switch (selectedCategory) {
+    case 'getting married':
+      if (title.includes('wedding') || title.includes('marriage') || title.includes('bride') || title.includes('groom')) return 0;
+      if (title.includes('bachelor') || title.includes('honeymoon') || title.includes('venue') || title.includes('catering')) return 1;
+      if (title.includes('outfit') || title.includes('photography') || title.includes('gift') || title.includes('invite')) return 2;
+      return 3;
+
+    case 'expecting a baby':
+      if (title.includes('baby') || title.includes('prenatal') || title.includes('pregnancy') || title.includes('maternity')) return 0;
+      if (title.includes('nursery') || title.includes('pediatrician') || title.includes('nanny') || title.includes('childcare')) return 1;
+      return 2;
+
+    case 'frequent travel':
+      if (title.includes('travel') || title.includes('flight') || title.includes('trip') || title.includes('visa')) return 0;
+      if (title.includes('passport') || title.includes('booking') || title.includes('itinerary') || title.includes('cab')) return 1;
+      if (title.includes('luggage') || title.includes('check-in') || title.includes('hotel')) return 2;
+      return 3;
+
+    case 'health and fitness':
+      if (title.includes('fitness') || title.includes('gym') || title.includes('workout') || title.includes('trainer')) return 0;
+      if (title.includes('health') || title.includes('medical') || title.includes('protein') || title.includes('nutrition')) return 1;
+      if (title.includes('wellness') || title.includes('yoga') || title.includes('swimming')) return 2;
+      return 3;
+
+    case 'pet parent':
+      if (title.includes('pet') || title.includes('dog') || title.includes('cat') || title.includes('vet')) return 0;
+      if (title.includes('grooming') || title.includes('boarding') || title.includes('daycare') || title.includes('vaccine')) return 1;
+      return 2;
+
+    case 'long work hours':
+      if (title.includes('office') || title.includes('work') || title.includes('client') || title.includes('meeting')) return 0;
+      if (title.includes('meal') || title.includes('cab') || title.includes('supplies') || title.includes('reminder')) return 1;
+      return 2;
+
+    case 'moving cities':
+      if (title.includes('rental') || title.includes('shifting') || title.includes('moving') || title.includes('relocation')) return 0;
+      if (title.includes('furniture') || title.includes('cleaning') || title.includes('utility') || title.includes('address')) return 1;
+      if (title.includes('technician') || title.includes('wifi') || title.includes('bank')) return 2;
+      return 3;
+
+    case 'likes brunch':
+      if (title.includes('restaurant') || title.includes('brunch') || title.includes('dining') || title.includes('table')) return 0;
+      if (title.includes('food') || title.includes('meal') || title.includes('chef') || title.includes('catering')) return 1;
+      return 2;
+
+    case 'likes concert':
+      if (title.includes('concert') || title.includes('event') || title.includes('ticket') || title.includes('entertainment')) return 0;
+      if (title.includes('hotel') || title.includes('venue') || title.includes('artist') || title.includes('show')) return 1;
+      return 2;
+
+    case 'nri/expats':
+      if (title.includes('visa') || title.includes('passport') || title.includes('nri') || title.includes('expat')) return 0;
+      if (title.includes('account') || title.includes('documents') || title.includes('abroad') || title.includes('cultural')) return 1;
+      return 2;
+
+    case 'plan social gathering':
+      if (title.includes('event') || title.includes('party') || title.includes('gathering') || title.includes('venue')) return 0;
+      if (title.includes('decoration') || title.includes('entertainment') || title.includes('catering') || title.includes('invite')) return 1;
+      return 2;
+
+    default:
+      return 999;
+  }
+};
+
+/**
  * Filters and sorts tasks based on user status and selected tags.
  * @param taskList - The complete list of tasks.
  * @param userStatus - The user's current status (e.g., 'Single').
@@ -185,7 +257,59 @@ export const getTopTasks = (
     return taskList; // Return all tasks in original order
   }
 
-  // Case 1b: No status selected but categories selected - return tasks by impact
+  // Case 1b: Single category selected (no status) - show 15 extremely relevant tasks
+  if (!userStatus && userTags.length === 1) {
+    const normalizedUserTag = normalizeString(userTags[0]);
+    
+    // Filter tasks that match the category
+    const categoryFilteredTasks = taskList.filter((task) => {
+      const taskTags = task.category.map(normalizeString);
+      return taskTags.includes(normalizedUserTag);
+    });
+
+    // Find popular task for this category
+    const popularTaskTitle = categoryPopularTasks[normalizedUserTag];
+    let popularTask = null;
+    if (popularTaskTitle) {
+      const normalizedPopularTaskTitle = normalizeString(popularTaskTitle);
+      popularTask = categoryFilteredTasks.find(
+        (task) => normalizeString(task.title) === normalizedPopularTaskTitle
+      );
+    }
+
+    // Get remaining tasks (excluding popular task)
+    const remainingTasks = categoryFilteredTasks.filter(
+      (task) => !popularTask || task.id !== popularTask.id
+    );
+
+    // Apply relevance scoring to remaining tasks
+    const tasksWithRelevance = remainingTasks.map((task) => {
+      const relevanceScore = getCategoryRelevance(task.title.toLowerCase(), normalizedUserTag);
+      return { ...task, relevanceScore, isPopular: false };
+    });
+
+    // Sort by: Relevance → Impact → Alphabetical
+    tasksWithRelevance.sort((a, b) => {
+      const relevanceDiff = a.relevanceScore - b.relevanceScore;
+      if (relevanceDiff !== 0) return relevanceDiff;
+
+      const impactDiff = impactOrder[a.impact] - impactOrder[b.impact];
+      if (impactDiff !== 0) return impactDiff;
+
+      return a.title.localeCompare(b.title);
+    });
+
+    // Combine popular task first, then most relevant tasks
+    const result = [];
+    if (popularTask) {
+      result.push({ ...popularTask, isPopular: true });
+    }
+    result.push(...tasksWithRelevance);
+
+    return result.slice(0, TOP_TASK_LIMIT);
+  }
+
+  // Case 1c: Multiple categories selected but no status - return tasks by impact
   if (!userStatus) {
     return [...taskList]
       .sort((a, b) => impactOrder[a.impact] - impactOrder[b.impact])
