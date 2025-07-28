@@ -311,17 +311,21 @@ export const getTopTasks = (
     return a.title.localeCompare(b.title);
   });
 
-  // Sort remaining tasks to prioritize exact category matches: Impact → Alphabetical
+  // Sort remaining tasks: Impact → Priority Score → Alphabetical
   remainingTasksWithScores.sort((a, b) => {
     // First sort by impact (High → Medium → Low)
     const impactDiff = impactOrder[a.impact] - impactOrder[b.impact];
     if (impactDiff !== 0) return impactDiff;
 
-    // Then sort alphabetically
+    // Then sort by priority score (lower = higher priority)
+    const scoreDiff = a.priorityScore - b.priorityScore;
+    if (scoreDiff !== 0) return scoreDiff;
+
+    // Finally sort alphabetically
     return a.title.localeCompare(b.title);
   });
 
-  // Combine: Popular tasks first, then remaining tasks sorted by impact → alphabetical
-  // This ensures we get 15 exact category matches without priority filtering limiting results
+  // Combine: Popular tasks first, then remaining tasks sorted by impact → priority → alphabetical
+  // This maintains priority scoring while ensuring we show all available exact matches
   return [...popularTasksWithScores, ...remainingTasksWithScores].slice(0, TOP_TASK_LIMIT);
 };
