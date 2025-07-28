@@ -457,9 +457,17 @@ export const getTopTasks = (
     return a.title.localeCompare(b.title);
   });
 
-  // Sort remaining tasks: Category Relevance → Impact → Priority Score → Alphabetical
+  // Sort remaining tasks: Priority Score → Impact → Category Relevance → Alphabetical
   remainingTasksWithScores.sort((a, b) => {
-    // Calculate category relevance score for any task based on selected categories
+    // First sort by priority score (lower = higher priority)
+    const scoreDiff = a.priorityScore - b.priorityScore;
+    if (scoreDiff !== 0) return scoreDiff;
+
+    // Then sort by impact (High → Medium → Low)
+    const impactDiff = impactOrder[a.impact] - impactOrder[b.impact];
+    if (impactDiff !== 0) return impactDiff;
+
+    // Then calculate category relevance score for any task based on selected categories
     const getCategoryRelevance = (task: any) => {
       const title = task.title.toLowerCase();
       let bestRelevance = 999; // Start with worst relevance
@@ -551,14 +559,6 @@ export const getTopTasks = (
     const bRelevance = getCategoryRelevance(b);
     
     if (aRelevance !== bRelevance) return aRelevance - bRelevance;
-
-    // Then sort by impact (High → Medium → Low)
-    const impactDiff = impactOrder[a.impact] - impactOrder[b.impact];
-    if (impactDiff !== 0) return impactDiff;
-
-    // Then sort by priority score (lower = higher priority)
-    const scoreDiff = a.priorityScore - b.priorityScore;
-    if (scoreDiff !== 0) return scoreDiff;
 
     // Finally sort alphabetically
     return a.title.localeCompare(b.title);
