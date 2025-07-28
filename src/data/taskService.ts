@@ -311,23 +311,17 @@ export const getTopTasks = (
     return a.title.localeCompare(b.title);
   });
 
-  // Sort remaining tasks using interleaved approach: Impact → Category Priority → Alphabetical
-  // Group tasks by impact level first
-  const highImpactTasks = remainingTasksWithScores.filter(task => task.impact === 'High');
-  const mediumImpactTasks = remainingTasksWithScores.filter(task => task.impact === 'Medium');
-  const lowImpactTasks = remainingTasksWithScores.filter(task => task.impact === 'Low');
+  // Sort remaining tasks to prioritize exact category matches: Impact → Alphabetical
+  remainingTasksWithScores.sort((a, b) => {
+    // First sort by impact (High → Medium → Low)
+    const impactDiff = impactOrder[a.impact] - impactOrder[b.impact];
+    if (impactDiff !== 0) return impactDiff;
 
-  // Sort each impact group by priority score, then alphabetically
-  const sortByPriorityThenAlphabetical = (a: any, b: any) => {
-    const scoreDiff = a.priorityScore - b.priorityScore;
-    if (scoreDiff !== 0) return scoreDiff;
+    // Then sort alphabetically
     return a.title.localeCompare(b.title);
-  };
+  });
 
-  highImpactTasks.sort(sortByPriorityThenAlphabetical);
-  mediumImpactTasks.sort(sortByPriorityThenAlphabetical);
-  lowImpactTasks.sort(sortByPriorityThenAlphabetical);
-
-  // Combine: Popular tasks first, then High → Medium → Low impact tasks, limited to 15 tasks
-  return [...popularTasksWithScores, ...highImpactTasks, ...mediumImpactTasks, ...lowImpactTasks].slice(0, TOP_TASK_LIMIT);
+  // Combine: Popular tasks first, then remaining tasks sorted by impact → alphabetical
+  // This ensures we get 15 exact category matches without priority filtering limiting results
+  return [...popularTasksWithScores, ...remainingTasksWithScores].slice(0, TOP_TASK_LIMIT);
 };
