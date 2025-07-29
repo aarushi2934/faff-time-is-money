@@ -1,6 +1,8 @@
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 
+// Updated with new UI changes: Relationship Status, faffit.com CTA, and ₹100 increments
+
 interface HeroProps {
   onCheckoutClick: () => void;
   onStartSavingClick: () => void;
