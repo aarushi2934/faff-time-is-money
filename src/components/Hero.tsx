@@ -53,6 +53,16 @@ export const Hero: React.FC<HeroProps> = ({ onCheckoutClick, onStartSavingClick 
             />
           </div>
 
+          {/* CTA button to faffit.com */}
+          <a
+            href="https://faffit.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-4 right-20 sm:top-6 sm:right-32 md:right-40 z-50 flex items-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 bg-white text-[#145C48] hover:bg-[#145C48] hover:text-white transition-all duration-300 rounded-lg font-semibold text-xs sm:text-sm md:text-base hover:scale-105 hover:shadow-2xl backdrop-blur-sm animate-fade-in-up delay-600"
+          >
+            <span>Visit faffit.com</span>
+          </a>
+
           {/* Checkout button in top-right corner */}
           <button
             onClick={onCheckoutClick}

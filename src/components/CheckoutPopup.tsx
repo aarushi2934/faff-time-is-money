@@ -12,11 +12,11 @@ export const CheckoutPopup: React.FC<CheckoutPopupProps> = ({ isOpen, onClose, c
   const [hourlyValue, setHourlyValue] = useState(500);
 
   const decreaseValue = useCallback(() => {
-    setHourlyValue(prev => prev > 50 ? prev - 10 : prev);
+    setHourlyValue(prev => prev > 50 ? prev - 100 : prev);
   }, []);
 
   const increaseValue = useCallback(() => {
-    setHourlyValue(prev => prev + 10);
+    setHourlyValue(prev => prev + 100);
   }, []);
 
   if (!isOpen) return null;

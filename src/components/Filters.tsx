@@ -2,7 +2,7 @@ import React from 'react';
 import { categoryFilters } from '../data/taskService';
 
 // Updated status filters to match new priority matrix  
-const statusFilters = ['Single', 'Parents', 'Couple'];
+const statusFilters = ['Single', 'Couple', 'Parents'];
 
 interface FiltersProps {
   selectedStatus: string[];
@@ -30,7 +30,7 @@ export const Filters: React.FC<FiltersProps> = ({
           {/* Status Filters */}
           <div className="mb-4 sm:mb-5">
             <h3 className="text-lg sm:text-xl font-bold text-[#145C48] mb-2 sm:mb-3 bg-gradient-text bg-clip-text">
-              Status <span className="text-sm font-normal text-gray-600">(Choose this first)</span>
+              Relationship Status <span className="text-sm font-normal text-gray-600">(Choose this first)</span>
             </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {statusFilters.map((status, index) => (
